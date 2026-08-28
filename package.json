@@ -1,0 +1,43 @@
+{
+  "name": "oficina-lambda-auth",
+  "version": "1.0.0",
+  "description": "Function Serverless (AWS Lambda) de autenticação de clientes por CPF/CNPJ — Tech Challenge Fase 3.",
+  "private": true,
+  "license": "UNLICENSED",
+  "main": "dist/handler.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "eslint \"src/**/*.ts\" --fix",
+    "test": "jest",
+    "test:cov": "jest --coverage",
+    "package": "npm run build && rm -f function.zip && npm ci --omit=dev && (cd dist && zip -qr ../function.zip .) && zip -qr function.zip node_modules && npm ci"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.23.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@types/aws-lambda": "^8.10.146",
+    "@types/jest": "^30.0.0",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^20.0.0",
+    "@types/pg": "^8.11.10",
+    "@typescript-eslint/eslint-plugin": "^8.20.0",
+    "@typescript-eslint/parser": "^8.20.0",
+    "eslint": "^9.18.0",
+    "jest": "^30.0.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.68.0"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/**/*.spec.ts"
+    ],
+    "coverageDirectory": "coverage"
+  }
+}

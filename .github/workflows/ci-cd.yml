@@ -33,6 +33,10 @@ jobs:
       - name: terraform init & validate
         working-directory: infra
         run: |
+          # function.zip só existe de verdade após `npm run package` (job de
+          # deploy); aqui é só um placeholder para o `filebase64sha256(...)`
+          # do main.tf ter um arquivo para ler durante a validação de sintaxe.
+          touch ../function.zip
           terraform init -backend=false
           terraform validate
 

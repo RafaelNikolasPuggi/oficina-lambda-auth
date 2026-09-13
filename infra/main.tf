@@ -41,9 +41,10 @@ resource "random_password" "jwt_secret" {
 }
 
 resource "aws_ssm_parameter" "jwt_secret" {
-  name  = "/oficina/jwt_secret"
-  type  = "SecureString"
-  value = random_password.jwt_secret.result
+  name      = "/oficina/jwt_secret"
+  type      = "SecureString"
+  value     = random_password.jwt_secret.result
+  overwrite = true
 }
 
 resource "aws_security_group" "lambda" {

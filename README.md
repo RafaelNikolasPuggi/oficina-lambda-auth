@@ -2,8 +2,19 @@
 
 Function Serverless (AWS Lambda) responsável pela autenticação de clientes por
 CPF/CNPJ — repositório 1 de 4 do Tech Challenge Fase 3. Fica atrás de um API Gateway
-HTTP API público; o [app principal](https://github.com/OWNER/oficina-tech-challenge)
+HTTP API público; o [app principal](https://github.com/RafaelNikolasPuggi/oficina-tech-challenge)
 consome o JWT que ela emite para proteger as rotas voltadas ao cliente final.
+
+## Deploy ativo
+
+> Roda sob demanda para conter custo — se não responder, o ambiente foi
+> desligado (`terraform destroy`) após a gravação da demonstração.
+
+```bash
+curl -X POST https://wq5yeux4ge.execute-api.us-east-1.amazonaws.com/auth/cliente \
+  -H "Content-Type: application/json" \
+  -d '{"documento":"111.444.777-35"}'
+```
 
 ## O que faz
 

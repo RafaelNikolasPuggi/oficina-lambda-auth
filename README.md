@@ -46,11 +46,9 @@ Não é necessário AWS nem banco de dados para rodar os testes — `buscarClien
 
 ## Infraestrutura (Terraform)
 
-Ver [`infra/`](infra). Publica o segredo JWT no SSM (`/oficina/jwt_secret`) e lê, do
-mesmo SSM, o que os outros repositórios publicaram: VPC/subnets
-(`oficina-infra-k8s`) e endpoint/credenciais do banco (`oficina-infra-db`) — aplique
-esses dois primeiro. Ver ADR 0006 no repositório principal para o porquê dessa
-integração via SSM em vez de `terraform_remote_state` direto entre repositórios.
+Ver [`infra/`](infra). Publica o segredo JWT no SSM e lê VPC/subnets
+(`oficina-infra-k8s`) e endpoint/credenciais do banco (`oficina-infra-db`) do mesmo
+SSM — aplique esses dois primeiro (por quê: [ADR 0006](https://github.com/RafaelNikolasPuggi/oficina-tech-challenge/blob/main/docs/adr/0006-ssm-para-integracao-entre-repos.md)).
 
 ```bash
 npm run build

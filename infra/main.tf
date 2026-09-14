@@ -140,6 +140,15 @@ resource "aws_apigatewayv2_stage" "default" {
   auto_deploy = true
 }
 
+# Publica a URL pública para os outros repositórios/ferramentas de QA lerem
+# em vez de precisar hardcodar o endpoint (muda a cada `terraform apply`).
+resource "aws_ssm_parameter" "api_endpoint" {
+  name      = "/oficina/lambda_auth_endpoint"
+  type      = "String"
+  value     = aws_apigatewayv2_api.auth.api_endpoint
+  overwrite = true
+}
+
 resource "aws_lambda_permission" "apigateway" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"

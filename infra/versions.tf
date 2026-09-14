@@ -13,8 +13,7 @@ terraform {
   }
 
   # State remoto compartilhado entre execuções de CI — mesmo bucket do
-  # oficina-infra-k8s, key própria. Ver ADR/README do repo infra-k8s para o
-  # histórico do incidente que motivou isso.
+  # oficina-infra-k8s, key própria.
   backend "s3" {
     bucket       = "oficina-tfstate-231136242237"
     key          = "lambda-auth/terraform.tfstate"

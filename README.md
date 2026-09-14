@@ -7,8 +7,8 @@ consome o JWT que ela emite para proteger as rotas voltadas ao cliente final.
 
 ## Deploy ativo
 
-> Roda sob demanda para conter custo — se não responder, o ambiente foi
-> desligado (`terraform destroy`) após a gravação da demonstração.
+> Roda sob demanda para conter custo — se não responder, o ambiente está
+> desligado. Ver "Infraestrutura (Terraform)" abaixo para provisionar novamente.
 
 ```bash
 curl -X POST https://wq5yeux4ge.execute-api.us-east-1.amazonaws.com/auth/cliente \

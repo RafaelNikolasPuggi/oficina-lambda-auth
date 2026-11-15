@@ -34,16 +34,19 @@ variable "ssm_db_endpoint_param" {
 }
 
 variable "ssm_db_username_param" {
+  # Fase 4: os clientes migraram do banco único "oficina" pro banco
+  # dedicado do os-service ("oficina_os") -- usar as credenciais
+  # genéricas aqui faria esta Lambda nunca encontrar nenhum cliente.
   type    = string
-  default = "/oficina/db_username"
+  default = "/oficina/os_db_username"
 }
 
 variable "ssm_db_password_param" {
   type    = string
-  default = "/oficina/db_password"
+  default = "/oficina/os_db_password"
 }
 
 variable "ssm_db_name_param" {
   type    = string
-  default = "/oficina/db_name"
+  default = "/oficina/os_db_name"
 }

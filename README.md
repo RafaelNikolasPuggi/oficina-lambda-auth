@@ -50,6 +50,13 @@ Ver [`infra/`](infra). Publica o segredo JWT no SSM e lê VPC/subnets
 (`oficina-infra-k8s`) e endpoint/credenciais do banco (`oficina-infra-db`) do mesmo
 SSM — aplique esses dois primeiro (por quê: [ADR 0006](https://github.com/RafaelNikolasPuggi/oficina-tech-challenge/blob/main/docs/adr/0006-ssm-para-integracao-entre-repos.md)).
 
+Na Fase 4, os 3 microsserviços ([oficina-os-service](https://github.com/RafaelNikolasPuggi/oficina-os-service),
+[oficina-producao-service](https://github.com/RafaelNikolasPuggi/oficina-producao-service),
+[oficina-pagamento-service](https://github.com/RafaelNikolasPuggi/oficina-pagamento-service))
+também leem esse mesmo `/oficina/jwt_secret` do SSM — ou seja, este repositório
+precisa ser aplicado (`terraform apply`) antes do deploy real deles, mesmo que o
+Lambda em si não faça parte da Saga.
+
 ```bash
 npm run build
 npm run package      # gera function.zip (dist/ + node_modules de produção)

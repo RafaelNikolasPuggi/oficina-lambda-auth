@@ -9,9 +9,12 @@ consome o JWT que ela emite para proteger as rotas voltadas ao cliente final.
 
 > Roda sob demanda para conter custo — se não responder, o ambiente está
 > desligado. Ver "Infraestrutura (Terraform)" abaixo para provisionar novamente.
+> O hostname muda sempre que o API Gateway é recriado do zero (destroy + apply) —
+> confira o output `api_endpoint` do `terraform apply` antes de assumir que a
+> URL abaixo ainda é a atual.
 
 ```bash
-curl -X POST https://wq5yeux4ge.execute-api.us-east-1.amazonaws.com/auth/cliente \
+curl -X POST https://dpoljhllb6.execute-api.us-east-1.amazonaws.com/auth/cliente \
   -H "Content-Type: application/json" \
   -d '{"documento":"111.444.777-35"}'
 ```
